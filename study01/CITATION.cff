@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Singapore Business Signals — Study 01: Early-Warning Indicators for F&B Demand"
+version: "1.0"
+date-released: 2026-11-08
+doi: 10.5281/zenodo.24039615
+authors:
+  - family-names: Ling
+    given-names: Alfred
+    affiliation: Independent researcher
+license:
+  - CC-BY-4.0
+  - MIT
+repository-code: "https://github.com/Kai-0501/singapore-business-signals"
+keywords: [forecasting, Singapore, food and beverage, business expectations, tourism, reproducible research]

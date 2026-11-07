@@ -1,0 +1,8 @@
+{
+  "name": "registry_formation_detailed_full",
+  "url": "https://tablebuilder.singstat.gov.sg/api/table/tabledata/M085831?limit=100000",
+  "download_utc": "2026-11-06T02:40:19.822003+00:00",
+  "bytes": 161005,
+  "sha256": "a48e92ef3366b5548b2a28518c78ca97e3ee17d2b3dcd751082c68e6e7c73b55",
+  "response_date": "Fri, 06 Nov 2026 02:40:19 GMT"
+}

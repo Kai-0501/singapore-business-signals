@@ -1,0 +1,12 @@
+{
+  "selected_alpha": {
+    "A": 100.0,
+    "B": 100.0,
+    "C": 100.0
+  },
+  "locked_utc": "2026-11-06T02:36:16.304919+00:00",
+  "test_performance_examined": false,
+  "validation_first": "2016-01",
+  "validation_last": "2024-02",
+  "preregistration_sha256": "fd528e90639ccc8e16fbff58cd450c239b0f92bf11c82accf840456a8f61aaa0"
+}

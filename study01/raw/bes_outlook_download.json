@@ -1,0 +1,23 @@
+{
+  "name": "bes_outlook",
+  "url": "https://data.gov.sg/api/action/datastore_search?resource_id=d_50fcfc2989b8b34cdef15b89cacf7911",
+  "download_utc": "2026-11-06T02:26:04.174898+00:00",
+  "bytes": 40964,
+  "sha256": "631e67353875bb3681f44770edb0ad7d6b3b8289e5a2f37e1591501eb3d741a6",
+  "http_headers": {
+    "date": "Fri, 06 Nov 2026 02:26:04 GMT",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "vary": "Accept-Encoding",
+    "apigw-requestid": "GZYdYjYKyQ0EJSQ=",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "last-modified": "Fri, 06 Nov 2026 02:26:04 GMT",
+    "cache-control": "max-age=300",
+    "cf-cache-status": "MISS",
+    "server": "envoy",
+    "cf-ray": "a560a6b06d94eff2-DFW",
+    "x-envoy-upstream-service-time": "1667",
+    "connection": "close",
+    "transfer-encoding": "chunked"
+  }
+}

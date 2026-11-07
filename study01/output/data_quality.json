@@ -1,0 +1,16 @@
+{
+  "volume_n": 501,
+  "expectations_n": 127,
+  "visitor_n": 225,
+  "missing_selected_series": 0,
+  "visitor_mirror_common_months": 224,
+  "visitor_mirror_exact_matches": 221,
+  "visitor_mirror_max_abs_difference": 43.0,
+  "visitor_mirror_differences": {
+    "2026-07": 43.0,
+    "2026-06": 1.0,
+    "2026-05": 1.0
+  },
+  "visitor_adjustment_resolution": "M550001 matches unadjusted official mirror except small vintage revisions; differs from separate SA M550002. Retain original inconsistent adjustmentType metadata.",
+  "api_total_row_complete": true
+}

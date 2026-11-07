@@ -1,0 +1,55 @@
+{
+  "sklearn_comparisons": [
+    {
+      "issue": "2016-01",
+      "model": "A",
+      "absolute_difference": 0.0
+    },
+    {
+      "issue": "2016-01",
+      "model": "B",
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "issue": "2016-01",
+      "model": "C",
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "issue": "2024-07",
+      "model": "A",
+      "absolute_difference": 3.3306690738754696e-16
+    },
+    {
+      "issue": "2024-07",
+      "model": "B",
+      "absolute_difference": 4.440892098500626e-16
+    },
+    {
+      "issue": "2024-07",
+      "model": "C",
+      "absolute_difference": 1.3322676295501878e-15
+    },
+    {
+      "issue": "2026-06",
+      "model": "A",
+      "absolute_difference": 6.106226635438361e-16
+    },
+    {
+      "issue": "2026-06",
+      "model": "B",
+      "absolute_difference": 8.881784197001252e-16
+    },
+    {
+      "issue": "2026-06",
+      "model": "C",
+      "absolute_difference": 8.881784197001252e-16
+    }
+  ],
+  "future_data_perturbation_passed": true,
+  "identical_test_origins": true,
+  "target_and_feature_missing_count": 0,
+  "all_72_primary_predictions_reproduced": true,
+  "raw_hashes_verified": 22,
+  "limitations": "Checks establish computation and imposed lag discipline, not historical release-date or vintage authenticity."
+}

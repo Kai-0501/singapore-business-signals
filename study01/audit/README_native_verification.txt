@@ -1,0 +1,1 @@
+Native Google Sheets import was read back. MAE, RMSE, warning metrics matched Python; corrected monthly and issue dates verified. Native XLSX export rendered for Results, Monthly Data and Predictions. All 14 authored workbook tabs visually inspected. Paper PDF exported from native Google Doc and all 10 pages visually inspected. Export/import numerical rounding is below 1e-8 pp.

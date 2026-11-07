@@ -1,0 +1,89 @@
+Singapore Business Signals — Study 01
+Feasibility assessment and preregistered methodology, version 1.0
+Research cutoff: 6 November 2026, Singapore time. Locked before any model performance calculations. This is a private, timestamped analysis protocol, not an external registry registration.
+
+FEASIBILITY
+Classification: FEASIBLE WITH LIMITATIONS.
+The original research question is retained: do public business expectations and tourism indicators improve forecasts of the average year-on-year growth in Singapore F&B sales volume over the next three calendar months, compared with historical sales alone?
+Verified downloads contain 501 monthly total F&B volume observations (January 1985–September 2026), 127 quarterly F&B expectations observations (1995 Q1–2026 Q3, database quarter labels), and 225 monthly visitor-arrival observations (January 2008–September 2026). The selected series have no nonnumeric/missing observations. More than ten years of joint history exist.
+The primary outcome will use SingStat's current, non-seasonally-adjusted, 2025-based chained-volume series M602211. The new basis began with the January 2026 release on 5 March 2026; methodology, coverage and weights changed. The archived 2017-based series ending December 2025 is retained for a vintage/basis sensitivity comparison.
+Historical vintages and a complete observation-by-observation first-publication calendar have not been reconstructed. Therefore the feasible experiment is a retrospective pseudo-out-of-sample evaluation on the downloaded vintages, with deliberately lagged information. It is NOT a genuine real-time backtest, nor can every historical release-lag assumption be certified. Archived releases will be checked where accessible. Any missing actual publication date stays missing, alongside a separately labelled availability assumption.
+The visitor table M550001 has an apparent metadata inconsistency: its API calls it seasonally adjusted although its title omits this and a separate adjusted table exists. Numeric comparison with the unadjusted data.gov.sg mirror and the separate adjusted series must resolve this before Model C runs.
+ACRA's official cessation notes identify retrospective adjustments through 2017 and administrative disruptions in December 2024 and January–August 2025. Aggregate entity cessations do not equal F&B outlet closures. Model D is excluded unless a comparable F&B-specific, historically timed series is verified; it will not affect primary model selection.
+
+LITERATURE AND NOVELTY
+SingStat's BITE already brings together F&B sales, expectations, tourism-related measures and business costs. MTI's Economic Survey describes sectoral conditions. Displaying these series together is not original.
+Hansson, Jansson and Löf (2005), “Business survey data: Do they help in forecasting GDP growth?”, International Journal of Forecasting 21(2), 377–389, investigates the forecasting value of business surveys in Sweden. This supports the testing framework, not a conclusion about Singapore F&B.
+Groene and Zakharov (2024), “Introduction of AI-based sales forecasting: how to drive digital transformation in food and beverage outlets”, uses a German franchise's hourly private sales and contextual predictors. It does not test the present aggregate, public-data question.
+NUS CRI's TRACE pilot examines Singapore F&B company credit risk, a different outcome from sector sales volume.
+Targeted public searches have not established an identical Singapore study with this outcome, publication-aware feature timing and nested historical/expectations/tourism models. The potential contribution is a reproducible sector-specific forecast comparison and data-timing audit. Priority or first-ever novelty is NOT claimed.
+
+OUTCOME AND FORECAST CLOCK
+For issue month t, let V_m be the monthly total F&B chained-volume index. Define g_m = 100 × (V_m / V_(m−12) − 1).
+The single target for every model is Y_t = (g_(t+1) + g_(t+2) + g_(t+3)) / 3, in percentage points of annual growth. This is an arithmetic mean of three monthly annual growth rates. It is neither quarter-on-quarter growth nor growth of a three-month sum.
+Forecast issuance: 20th calendar day of every month, 23:59 Singapore time. Target months begin the following month. Use only issue months whose three target months are observed by the research cutoff.
+Primary lag rules: sales through t−2; visitor arrivals through t−3; the most recent expectations database quarter whose quarter-end is at least two calendar months before the issue month. Equivalently, a quarter labelled Q1 first becomes eligible at the May issue, Q2 in August, Q3 in November and Q4 in February. Actual release dates, where verified, override eligibility if later. No backfilling from future survey releases.
+The BES table quarter is the quarter BEFORE the quarter referred to by the revenue forecast. For example, the database 2026 Q2 entry refers to July–September 2026, published 31 July 2026. Never treat the database quarter as its release date.
+Each historical training target must have matured under the same sales-release rule: training issue s is eligible only when s+3 <= t−2. Thus s <= t−5. No model trains on outcomes that overlap unobserved months.
+
+SAMPLE SPLITS
+Use raw observations from 2008 onwards for joint predictor construction (earlier F&B observations may supply annual lags).
+Candidate training issue months: January 2010 onwards.
+Initial validation forecast: January 2016, trained on eligible origins January 2010–August 2015.
+Validation issues: January 2016–February 2024 inclusive. Expand the training sample at each issue.
+Final untouched test issues: July 2024–June 2026 inclusive, 24 forecasts. Their target windows run August–October 2024 through July–September 2026.
+March–June 2024 is an embargo between validation and final testing: these origins are not used for tuning. Validation outcomes through May 2024 are observable under the lag rule at the first final-test issue.
+Test outcomes must not be used to choose predictors, transformations, penalties, thresholds or reporting periods. At later test origins, refitting may incorporate earlier test labels only after they have matured; this is sequential expanding-window evaluation, not tuning.
+
+MODELS
+A: Direct ridge regression for Y_t on an intercept, latest annual sales growth g_(t−2), mean annual sales growth over t−4 to t−2, last year's matching target Y_(t−12), and 11 issue-month indicators.
+B: Model A plus the latest eligible F&B operating-revenue net weighted balance (percentage points).
+C: Model B plus the latest eligible annual visitor log change, 100 × [log(1 + arrivals_(t−3)) − log(1 + arrivals_(t−15))]. The log transform and +1 are fixed in advance to cope with near-zero COVID arrivals.
+Simple diagnostic benchmarks: zero growth; persistence at latest observed annual sales growth; seasonal persistence Y_(t−12). These are not substitutes for the primary A/B/C comparison.
+For each A/B/C model, choose ridge alpha from {0.1, 1, 10, 100} using the smallest validation MAE. In an exact tie, choose the larger alpha. Standardise every nonconstant predictor using only the training sample at each origin; do not standardise the outcome. The intercept is unpenalised. Use ordinary unweighted squared-loss ridge. No extra predictors, interactions, automated lag searches or machine-learning ensembles.
+Refit at every origin with that model's fixed selected alpha; do not retune during final testing.
+
+MISSING DATA AND TRANSFORMATIONS
+Parse dates and numeric values, assert unique consecutive monthly/quarterly periods, nonnegative arrivals and positive F&B levels, and retain source precision. Treat source NA/suppressed values as missing, not zero.
+No interpolation. Survey values may be carried forward only after their eligible release date. Exclude a forecast from ALL compared models if any required variable or target is missing; report all exclusions. Do not selectively compare models on different dates.
+Keep raw downloads, SHA-256 hashes, download timestamps, metadata, a data dictionary and a transformation log. Record observation date, verified release date (if known), assumed eligibility date, table update date and download date separately.
+
+EVALUATION AND DECISION RULES
+Primary: MAE in percentage points. Secondary: RMSE in percentage points. Report model-minus-baseline absolute changes and 100 × (MAE_baseline − MAE_model) / MAE_baseline, with positive percentages meaning improvement.
+Directional accuracy: agreement on positive versus nonpositive Y_t.
+Weak demand is fixed at Y_t <= 0%; issue a warning when predicted Y_t <= 0%. Report true/false positives, true/false negatives, precision, recall, false-positive rate and balanced accuracy. Undefined ratios remain unavailable. Compare against always-warning and never-warning decisions.
+A meaningfully successful predictor must: reduce test MAE by at least 10% AND at least 0.25 percentage points; not worsen RMSE by more than 5%; improve MAE in BOTH consecutive 12-origin test halves; retain the direction of improvement in stricter-lag and pandemic-training-exclusion checks; and have a positive lower endpoint for the paired MAE-improvement interval below.
+H1 compares B with A. H2 compares C with B and also requires C to beat A under the size-of-improvement criteria. H3 remains exploratory and untested if its data quality gate fails. Failure to meet the criterion is not proof of no useful information in every possible specification.
+Use paired circular moving-block bootstrap of test-period losses, block length 6 months, 5,000 replications, seed 20261106. Report 95% descriptive intervals and 97.5% intervals for the two primary H1/H2 comparisons (Bonferroni family-wise convention). These are approximate, conditional on fitted forecasts, and fragile with only 24 overlapping origins; no claim of reliable large-sample inference.
+Show all three non-overlapping horizon cohorts (every third issue, each with eight forecasts) to demonstrate how little independent outcome information the final test contains.
+
+LOCKED ADVERSARIAL AND ROBUSTNESS CHECKS
+1. Seasonal controls: remove the month indicators; compare whether the added signal is just a seasonal pattern.
+2. Stricter timing: sales through t−3 and tourism through t−4, survey eligibility delayed one additional month, with training labels matured consistently.
+3. Stale survey: delay the eligible survey by one complete quarter.
+4. Pandemic influence: exclude training origins whose target includes any month January 2020–December 2023, covering the shock, reopening and annual base effects. Retain all final-test forecasts. This is retrospective sensitivity, not a historical policymaker's foresight.
+5. Sample stability: use only the latest 60 eligible training origins; report pre-COVID validation origins January 2016–September 2019 and each final-test year separately.
+6. Survey definition: replace revenue expectations with the six-month general outlook balance; do not choose whichever works better.
+7. Vintage/basis sensitivity: repeat the unchanged models with the archived 2017-based F&B series on the common observable test subset ending September 2025, and compare against the current-vintage models on those IDENTICAL origins. This does not isolate ordinary revisions from rebasing.
+8. Report all A/B/C specifications and all fixed checks regardless of sign. No post-test model repair in the confirmatory results.
+9. Registry data: document the official administrative-change evidence, with a descriptive chart if useful; do not infer outlet failures or consumer demand from total cessations.
+10. Predictive interpretation only. Tourism and sales may share shocks; association does not establish tourism's causal effect.
+
+STOPPING AND PUBLICATION
+If an essential series fails integrity checks and no verified alternative exists, stop that model and report the precise limitation. Do not fabricate numbers or issue forecasts based on ambiguous data.
+The final paper must distinguish completed pseudo-out-of-sample evidence from uncompleted real-time validation. LinkedIn drafting is authorised; publication and changes to sharing are not.
+All deviations after this lock must be dated, justified and labelled before any affected new analysis. No result is known at the time this protocol is locked.
+
+CORE SOURCES
+SingStat F&B volume: https://tablebuilder.singstat.gov.sg/table/TS/M602211
+SingStat revenue expectations: https://tablebuilder.singstat.gov.sg/table/TS/M250451
+SingStat general outlook: https://tablebuilder.singstat.gov.sg/table/TS/M250431
+STB arrivals via SingStat: https://tablebuilder.singstat.gov.sg/table/TS/M550001
+Archived F&B volume: https://data.gov.sg/datasets/d_42cb05dd61cddf473a8ba82cd10c7e34/view
+ACRA cessations and official caveats: https://data.gov.sg/datasets/d_ba347562a01a85401078d3d70ca720ad/view
+2026 rebasing: https://www.singstat.gov.sg/files/c7a9888f-a87c-41fe-97cb-d82669d65bb6.pdf
+BES definition: https://www.singstat.gov.sg/find-data/explore-data-themes/industry/business-expectations/our-data-explained
+BITE: https://www.singstat.gov.sg/data-tools-services/business-insights-tool-for-enterprises-bite/know-my-industry/food-and-beverage-services
+Groene and Zakharov: https://doi.org/10.1007/s44163-023-00097-x
+Hansson, Jansson and Löf: https://doi.org/10.1016/j.ijforecast.2004.11.003
+NUS TRACE: https://nuscri.org/en/news/50/

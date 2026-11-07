@@ -1,0 +1,28 @@
+[
+  {
+    "hypothesis": "H1",
+    "MAE_gain_pp": -0.18336746012290073,
+    "MAE_improvement_pct": -10.855991800281641,
+    "at_least_10pct": false,
+    "at_least_025pp": false,
+    "RMSE_not_over_5pct_worse": true,
+    "both_test_halves_improve": false,
+    "lag_and_pandemic_sensitivity_improve": false,
+    "adjusted_interval_lower_positive": false,
+    "size_criteria_also_vs_A": false,
+    "all_pass": false
+  },
+  {
+    "hypothesis": "H2",
+    "MAE_gain_pp": 0.08306640784419406,
+    "MAE_improvement_pct": 4.4362242895021895,
+    "at_least_10pct": false,
+    "at_least_025pp": false,
+    "RMSE_not_over_5pct_worse": true,
+    "both_test_halves_improve": true,
+    "lag_and_pandemic_sensitivity_improve": false,
+    "adjusted_interval_lower_positive": true,
+    "size_criteria_also_vs_A": false,
+    "all_pass": false
+  }
+]
